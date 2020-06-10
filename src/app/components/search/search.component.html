@@ -25,7 +25,8 @@
       <mat-label>Sorting by</mat-label>
       <mat-select>
         <mat-option value="name" (click)="sortBy('name')">name</mat-option>
-        <mat-option value="date" (click)="sortBy('date')">date</mat-option>
+        <mat-option value="date" (click)="sortBy('date')">last update</mat-option>
+        <mat-option value="forks" (click)="sortBy('forks')">forks</mat-option>
       </mat-select>
     </mat-form-field>
     <div mat-subheader>Search results</div>

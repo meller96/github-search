@@ -9,11 +9,12 @@
     </mat-card-header>
     <mat-card-content>
       <p>Description : {{ data.description }}</p>
+      
     </mat-card-content>
     <div class="mat-card-actions">
-      <span class="creationDate">
+      <p class="creationDate">
         Created : {{ data.created_at | date }}
-      </span>
+      </p>
       <a mat-button href="{{ data.html_url }}">LINK</a>
     </div>
   </mat-card>
