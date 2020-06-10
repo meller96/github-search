@@ -1,0 +1,20 @@
+<div class="repository-card">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="card-image">
+        <img src="{{ data.owner.avatar_url }}" alt="Photo of profile" />
+      </div>
+      <mat-card-title> {{ data.name }}</mat-card-title>
+      <mat-card-subtitle>Language : {{ data.language }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Description : {{ data.description }}</p>
+    </mat-card-content>
+    <div class="mat-card-actions">
+      <span class="creationDate">
+        Created : {{ data.created_at | date }}
+      </span>
+      <a mat-button href="{{ data.html_url }}">LINK</a>
+    </div>
+  </mat-card>
+</div>

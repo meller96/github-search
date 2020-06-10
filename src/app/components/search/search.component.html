@@ -1,0 +1,50 @@
+<div class="search-field">
+  <form [formGroup]="searchForm">
+    <mat-form-field>
+      <input
+        placeholder="Github repo search"
+        matInput
+        (keyup)="searchTerm.next($event)"
+        formControlName="search"
+      />
+    </mat-form-field>
+  </form>
+</div>
+
+<div *ngIf="errorMessage" class="error-message">
+  <h2>Error</h2>
+  <p class="error">{{ errorMessage }}</p>
+</div>
+
+<div class="result-field">
+  <div class="loader" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <mat-list *ngIf="searchResults && searchResults.length > 0 && !loading">
+    <mat-form-field>
+      <mat-label>Sorting by</mat-label>
+      <mat-select>
+        <mat-option value="name" (click)="sortBy('name')">name</mat-option>
+        <mat-option value="date" (click)="sortBy('date')">date</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div mat-subheader>Search results</div>
+    <mat-list-item
+      (click)="goToRepo(item)"
+      *ngFor="
+        let item of searchResults
+          | sortByField: (sortingField ? sortingField : null);
+        let i = index
+      "
+    >
+      <div mat-icon class="repository-icon">
+        <img src="{{ item.owner.avatar_url }}" />
+      </div>
+      <div mat-line class="name">{{ item.name }}</div>
+      <div mat-line>
+        <span class="date">Last update: {{ item.updated_at | date }} &nbsp;</span>
+        {{ item.description }}
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>
